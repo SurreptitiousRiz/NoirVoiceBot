@@ -20,8 +20,6 @@ class vc(commands.Cog):
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
         if before.channel is not None:
-            print("user left the channel")
-            await before.channel.delete()
             if before.channel.category.id == get_category_by_name(before.channel.guild, "TEMP").id:
                 if len(before.channel.members) == 0:
                     await before.channel.delete()
@@ -114,12 +112,13 @@ class vc(commands.Cog):
         await ctx.channel.send(":wtf:")
 
     @commands.command()
-    async def voice(self, ctx, channel_name, category_name="TEMP", user_limit=None):
-        #return m.author.id == ctx.author.id
+    async def cv(self, ctx, channel_name, category_name="TEMP", user_limit=None):
+        #member = ctx.message.author
+        #role = discord.utils.find(lambda r: r.name == 'Creator', ctx.message.server.roles)
+        #if role in self.roles:
+            #await bot.say("{} is not muted".format(user))
         category = get_category_by_name(ctx, category_name)
         await ctx.guild.create_voice_channel(channel_name, category=category, user_limit=user_limit)
-        #channel = get_channel_by_name(guild, channel_name)
-        #c.execute ("INSERT INTO guild VALUES (?, ?, ?, ?)",(guildID,id,channel.id,channel.category.id))
 
     @commands.group()
     async def vc(self, ctx):
