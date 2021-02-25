@@ -20,7 +20,7 @@ class vc(commands.Cog):
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
         if before.channel is not None:
-            if before.channel.category.id == get_category_by_name(before.channel.guild, "TEMP").id:
+            if before.channel.category.id == get_category_by_name(before.channel.guild, "Temp ✪ ════════════════").id:
                 if len(before.channel.members) == 0:
                     await before.channel.delete()
 
@@ -94,7 +94,7 @@ class vc(commands.Cog):
         conn.close()
 
     @commands.command()
-    async def help(self, ctx):
+    async def rizishandsome1234554321(self, ctx):
         embed = discord.Embed(title="Help", description="",color=0x7289da)
         embed.set_author(name="Voice Create",url="https://discordbots.org/bot/472911936951156740", icon_url="https://i.imgur.com/i7vvOo5.png")
         embed.add_field(name=f'**Commands**', value=f'**Set your channel Private by using the following command:**\n\n`.vc private`\n\n------------\n\n'
@@ -112,13 +112,11 @@ class vc(commands.Cog):
         await ctx.channel.send(":wtf:")
 
     @commands.command()
-    async def cv(self, ctx, channel_name, category_name="TEMP", user_limit=None):
-        #member = ctx.message.author
-        #role = discord.utils.find(lambda r: r.name == 'Creator', ctx.message.server.roles)
-        #if role in self.roles:
-            #await bot.say("{} is not muted".format(user))
-        category = get_category_by_name(ctx, category_name)
-        await ctx.guild.create_voice_channel(channel_name, category=category, user_limit=user_limit)
+    async def cv(self, ctx,*, channel_name):
+        perms = {'manage_channels': True,'connect': True, 'speak': True}
+        overwrites = {ctx.author: discord.PermissionOverwrite(**perms)}
+        category = get_category_by_name(ctx.guild, "Temp ✪ ════════════════")
+        await ctx.guild.create_voice_channel(channel_name, overwrites=overwrites, category=category, user_limit=None)  
 
     @commands.group()
     async def vc(self, ctx):
@@ -372,9 +370,9 @@ class vc(commands.Cog):
 def setup(bot):
     bot.add_cog(vc(bot))
 
-def get_category_by_name(ctx, category_name):
+def get_category_by_name(guild, category_name):
     category = None
-    for c in ctx.guild.categories:
+    for c in guild.categories:
         if c.name.lower() == category_name.lower():
             category = c
             break
