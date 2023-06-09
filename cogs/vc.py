@@ -94,20 +94,6 @@ class vc(commands.Cog):
         conn.close()
 
     @commands.command()
-    async def rizishandsome1234554321(self, ctx):
-        embed = discord.Embed(title="Help", description="",color=0x7289da)
-        embed.set_author(name="Voice Create",url="https://discordbots.org/bot/472911936951156740", icon_url="https://i.imgur.com/i7vvOo5.png")
-        embed.add_field(name=f'**Commands**', value=f'**Set your channel Private by using the following command:**\n\n`.vc private`\n\n------------\n\n'
-                        f'**Set your channel Public by using the following command:**\n\n`.vc public`\n\n------------\n\n'
-                        f'**Change your channel name by using the following command:**\n\n`.vc name <name>`\n\n**Example:** `.vc name EU 5kd+`\n\n------------\n\n'
-                        f'**Change your channel limit by using the following command:**\n\n`.vc limit number`\n\n**Example:** `.vc limit 2`\n\n------------\n\n'
-                        f'**Give users permission to join by using the following command:**\n\n`.vc permit @person`\n\n**Example:** `.vc permit @Sam#9452`\n\n------------\n\n'
-                        f'**Claim ownership of channel once the owner has left:**\n\n`.vc claim`\n\n**Example:** `.vc claim`\n\n------------\n\n'
-                        f'**Remove permission and the user from your channel using the following command:**\n\n`.vc reject @person`\n\n**Example:** `.vc reject @Sam#9452`\n\n', inline='false')
-        embed.set_footer(text='Bot developed by Sam#9452')
-        await ctx.channel.send(embed=embed)
-
-    @commands.command()
     async def cunt(guild, ctx):
         await ctx.channel.send(":wtf:")
 
